@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}controller_name
+{% endblock %}
+
+{% block body %}
+	<h1 class="h3 my-4 font-weight-normal">{{controller_name}}</h1>
+
+		{% for article in articles %}
+			<article class="border border-primary my-4 p-2 rounded text-center col-lg-6 col-md-4 col-sm-5 ">
+				<p class="h5"><span class="text-primary">Titre :</span> {{article.getTitre()}}</p>
+				<div class="mt-5">
+					<a class="btn btn-primary" href="#">Lire l'article</a>
+				</div>
+			</article>
+		{% endfor %}
+{% endblock %}

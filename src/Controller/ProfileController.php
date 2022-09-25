@@ -14,7 +14,15 @@ class ProfileController extends AbstractController
     public function index(): Response
     {
         return $this->render('profile/index.html.twig', [
-            'controller_name' => 'ProfileController',
+            'controller_name' => 'Bienvenue',
+        ]);
+    }
+
+    #[Route('/modifier', name: 'edit')]
+    public function edit(): response
+    {
+        return $this->render('profile/modifier.html.twig', [
+            'controller_name' => 'Modifier vos informations',
         ]);
     }
 }

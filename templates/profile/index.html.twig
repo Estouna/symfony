@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil{% endblock %}
+{% block title %}controller_name{% endblock %}
 
 {% block body %}
-	<h1 class="h3 my-4 font-weight-normal text-center">Profil</h1>
+	<h1 class="h3 my-4 font-weight-normal">{{controller_name}}
+		{{ app.user.pseudo }}</h1>
+	<div class="text-center">
+		<a href="{{ path('profile_edit') }}" class="mt-2 btn btn-primary">Modifier mes informations</a>
+	</div>
 {% endblock %}
