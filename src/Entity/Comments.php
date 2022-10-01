@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 
 #[ORM\Entity(repositoryClass: CommentsRepository::class)]
-class Comments
+class Comments 
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

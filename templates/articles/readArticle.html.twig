@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}controller_name{% endblock %}
+
+{% block body %}
+	<h1 class="h1 my-4 font-weight-normal">{{controller_name}}</h1>
+			<!-- 
+				ARTICLE
+			-->
+			<article class="card text-white bg-secondary my-4 p-1 col-lg-8 col-md-10 col-sm-5">
+				<div class="card-header">
+					<p class="ft-9 text-info text-center">{{article.getTitre()}}</p>
+				</div>
+				<div class="card-body">
+                    <p class="ft-7 my-5">{{article.getContenu()}}</p>
+				</div>
+				<div class="card-footer">
+					<p class="h6">Publié à {{article.getDatePublication.format('H:i')}} le {{article.getDatePublication.format('d/m/Y')}}</p>
+				</div>
+			</article>
+			<!-- 
+				COMMMENTAIRES
+			-->
+			{% for comment in comments %}
+				<div class="card my-4 p-1 col-lg-6 col-md-7 col-sm-5">
+					<div class="card-header">
+						<p class="text-info m-0">{{comment.getAuteur.pseudo()}}</p>
+						<p class="text-muted ft-4 m-0">Publié à {{article.getDatePublication.format('H:i')}} le {{article.getDatePublication.format('d/m/Y')}}</p>
+					</div>
+					<div class="card-body">
+						<p>{{comment.getContenu()}}</p>
+					</div>
+				</div>
+			{% endfor %}
+			<!-- 
+				FORMULAIRE POSTER UN COMMENTAIRE
+			-->
+			{% if app.user %}
+				<div class="card row col-lg-8 col-md-10 col-sm-5 my-5">
+					<div class="card-header text-center text-white bg-secondary">Poster un commentaire</div>
+					<div class="col p-2">
+					{{ form_start(formComment) }}
+						{{ form_row(formComment.contenu) }}
+                		<div class="d-flex flex-column align-items-center my-2">
+				    		{{ form_row(formComment.poster) }}
+                		</div>
+					{{ form_end(formComment) }}
+					</div>
+				</div>
+			{% endif %}
+
+
+
+{% endblock %}

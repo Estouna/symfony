@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
+use App\Model\TimesTampedInterface;
 
 #[ORM\Entity(repositoryClass: ArticlesRepository::class)]
 class Articles

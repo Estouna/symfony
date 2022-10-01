@@ -4,14 +4,27 @@
 {% endblock %}
 
 {% block body %}
-	<h1 class="h3 my-4 font-weight-normal">{{controller_name}}</h1>
+	<h1 class="h1 my-4 font-weight-normal">{{controller_name}}</h1>
 
-		{% for article in articles %}
-			<article class="border border-primary my-4 p-2 rounded text-center col-lg-6 col-md-4 col-sm-5 ">
-				<p class="h5"><span class="text-primary">Titre :</span> {{article.getTitre()}}</p>
-				<div class="mt-5">
-					<a class="btn btn-primary" href="#">Lire l'article</a>
+	<!-- 
+		LISTE DE TOUS LES ARTICLES
+	-->
+	{% for article in articles %}
+			<article class="card text-white bg-secondary my-4 p-2 col-lg-8 col-md-10 col-sm-5">
+				<div class="card-header">
+					<p class="h5"><span class="text-info">Titre :</span>{{article.getTitre()}}</p>
+				</div>
+				<div class="card-body">
+					<p class="h6">
+						Publié à
+						{{article.getDatePublication.format('H:i')}}
+						le
+						{{article.getDatePublication.format('d/m/Y')}}</p>
+					<div class="mt-5 text-center">
+						<a class="btn btn-primary" href="{{path('articles_read', {id: article.id})}}">Lire l'article</a>
+					</div>
 				</div>
 			</article>
-		{% endfor %}
+	{% endfor %}
+
 {% endblock %}
