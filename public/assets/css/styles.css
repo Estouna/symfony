@@ -1,5 +1,7 @@
 body{
     min-height: 100vh;
+    background-image: url("../images/bdmin2.png");
+    background-size: contain;
 }
 
 /*

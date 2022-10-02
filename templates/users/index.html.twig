@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}controller_name{% endblock %}
+
+{% block body %}
+	<h1 class="h1 my-4 font-weight-normal">{{ controller_name }} {{ app.user.pseudo }}</h1>
+	<p>Email actuel : {{ app.user.email }}</p>
+	<div class="text-center">
+		<a href="{{ path('users_editProfil') }}" class="mt-2 btn btn-primary">Modifier mes informations</a>
+	</div>
+	
+	
+	<!-- 
+		COMMMENTAIRES
+	-->
+	<h2 class="h3 mt-5 font-weight-normal">Modifier mes commentaires</h2>
+	{% for comment in comments %}
+		<div class="card my-1 p-1 col-lg-6 col-md-9 col-sm-10">
+			<div class="card-header">
+				<p class="text-info m-0">{{comment.getAuteur.pseudo()}}</p>
+				<p class="text-muted ft-4 m-0">Publié à {{comment.getDatePublication.format('H:i')}} le {{comment.getDatePublication.format('d/m/Y')}}</p>
+			</div>
+			<div class="card-body">
+				<p>{{comment.getContenu()}}</p>
+			</div>
+			<div class="card-footer text-center">
+				<a href="{{ path('users_editComments') }}" class="mt-2 btn btn-info">Modifier</a>
+			</div>
+		</div>
+	{% endfor %}
+
+{% endblock %}

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Articles;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query;
 
 /**
  * @extends ServiceEntityRepository<Articles>
@@ -37,6 +38,15 @@ class ArticlesRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findForPagination() :Query
+    {
+        // a est un alias pour articles
+        $qb = $this->createQueryBuilder('a')
+            ->orderBy('a.date_publication', 'DESC');
+
+            return $qb->getQuery();
     }
 
 //    /**

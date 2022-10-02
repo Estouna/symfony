@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Comments;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query;
+use App\Entity\Articles;
 
 /**
  * @extends ServiceEntityRepository<Comments>
@@ -37,6 +39,21 @@ class CommentsRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findForPagination(?Articles $articles = null) :Query
+    {
+        // c est un alias pour comments
+        $qb = $this->createQueryBuilder('c')
+            ->orderBy('c.date_publication', 'DESC');
+
+        if ($articles) {
+            $qb->leftJoin('c.article', 'a')
+            ->where($qb->expr()->eq('a.id', ':articleId'))
+            ->setParameter('articleId', $articles->getId());
+        }
+
+            return $qb->getQuery();
     }
 
 //    /**

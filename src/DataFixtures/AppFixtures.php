@@ -39,26 +39,26 @@ class AppFixtures extends Fixture
             $article->setDatePublication(new \DatetimeImmutable());
 
             $manager->persist($article);
-        }
-
-        // Utilisateurs
-        for ($u = 1; $u <= 20; $u++) {
-            $user = new Users();
-            $user->setEmail($faker->email);
-            $user->setRoles(['ROLE_USER']);
-            $user->setPseudo($faker->firstName);
-            $user->setPassword($this->passwordEncoder->hashPassword($user, 'secret'));
-
-            // Commentaire par utilsateur
-            for ($c = 1; $c <= 1; $c++) {
-                $comment = new Comments();
-                $comment->setContenu($faker->text());
-                $comment->setAuteur($user);
-                $comment->setArticle($article);
-                $comment->setDatePublication(new \DatetimeImmutable());
-
-                $manager->persist($user);
-                $manager->persist($comment);
+            
+            // Utilisateurs
+            for ($u = 1; $u <= 20; $u++) {
+                $user = new Users();
+                $user->setEmail($faker->email);
+                $user->setRoles(['ROLE_USER']);
+                $user->setPseudo($faker->firstName);
+                $user->setPassword($this->passwordEncoder->hashPassword($user, 'secret'));
+                
+                // Commentaire par utilsateur
+                for ($c = 1; $c <= 1; $c++) {
+                    $comment = new Comments();
+                    $comment->setContenu($faker->text());
+                    $comment->setAuteur($user);
+                    $comment->setArticle($article);
+                    $comment->setDatePublication(new \DatetimeImmutable());
+                    
+                    $manager->persist($user);
+                    $manager->persist($comment);
+                }
             }
         }
 

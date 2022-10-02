@@ -7,12 +7,12 @@
 			<!-- 
 				ARTICLE
 			-->
-			<article class="card text-white bg-secondary my-4 p-1 col-lg-8 col-md-10 col-sm-5">
+			<article class="card text-white bg-secondary my-4 p-1 col-lg-8 col-md-10 col-sm-12">
 				<div class="card-header">
 					<p class="ft-9 text-info text-center">{{article.getTitre()}}</p>
 				</div>
 				<div class="card-body">
-                    <p class="ft-7 my-5">{{article.getContenu()}}</p>
+                    <p class="ft-6 my-5">{{article.getContenu()}}</p>
 				</div>
 				<div class="card-footer">
 					<p class="h6">Publié à {{article.getDatePublication.format('H:i')}} le {{article.getDatePublication.format('d/m/Y')}}</p>
@@ -22,21 +22,31 @@
 				COMMMENTAIRES
 			-->
 			{% for comment in comments %}
-				<div class="card my-4 p-1 col-lg-6 col-md-7 col-sm-5">
+				<div class="card my-1 p-1 col-lg-6 col-md-9 col-sm-10">
 					<div class="card-header">
 						<p class="text-info m-0">{{comment.getAuteur.pseudo()}}</p>
-						<p class="text-muted ft-4 m-0">Publié à {{article.getDatePublication.format('H:i')}} le {{article.getDatePublication.format('d/m/Y')}}</p>
+						<p class="text-muted ft-4 m-0">Publié à {{comment.getDatePublication.format('H:i')}} le {{comment.getDatePublication.format('d/m/Y')}}</p>
 					</div>
 					<div class="card-body">
 						<p>{{comment.getContenu()}}</p>
 					</div>
 				</div>
 			{% endfor %}
+
+			<!-- 
+				PAGINATION
+			-->
+			<div class="container mt-4">
+				<div class="d-flex align-items-center justify-content-center">
+					{{ knp_pagination_render(comments) }}
+				</div>
+			</div>
+
 			<!-- 
 				FORMULAIRE POSTER UN COMMENTAIRE
 			-->
 			{% if app.user %}
-				<div class="card row col-lg-8 col-md-10 col-sm-5 my-5">
+				<div class="card row col-lg-8 col-md-10 col-sm-10 my-5">
 					<div class="card-header text-center text-white bg-secondary">Poster un commentaire</div>
 					<div class="col p-2">
 					{{ form_start(formComment) }}

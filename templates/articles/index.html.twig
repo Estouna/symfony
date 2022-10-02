@@ -12,7 +12,7 @@
 	{% for article in articles %}
 			<article class="card text-white bg-secondary my-4 p-2 col-lg-8 col-md-10 col-sm-5">
 				<div class="card-header">
-					<p class="h5"><span class="text-info">Titre :</span>{{article.getTitre()}}</p>
+					<p class="ft-9 text-info text-center">{{article.getTitre()}}</p>
 				</div>
 				<div class="card-body">
 					<p class="h6">
@@ -26,5 +26,11 @@
 				</div>
 			</article>
 	{% endfor %}
+
+	<div class="container">
+		<div class="d-flex align-items-center justify-content-center">
+			{{ knp_pagination_render(articles) }}
+		</div>
+	</div>
 
 {% endblock %}
