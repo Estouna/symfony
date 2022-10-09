@@ -25,12 +25,13 @@ class UsersLoginAuthenticator extends AbstractLoginFormAuthenticator
 
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
-        $this->urlGenerator = $urlGenerator;
+        //$this->urlGenerator = $urlGenerator;
     }
 
     public function authenticate(Request $request): Passport
     {
-        $email = $request->request->get('email', '');
+        // Changement d'email à _username car symfony console make:auth est déprécié
+        $email = $request->request->get('_username', '');
 
         $request->getSession()->set(Security::LAST_USERNAME, $email);
 
@@ -42,18 +43,18 @@ class UsersLoginAuthenticator extends AbstractLoginFormAuthenticator
             ]
         );
     }
-
+    
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-
+        
         // For example:
         return new RedirectResponse($this->urlGenerator->generate('app_main'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
-
+    
     protected function getLoginUrl(Request $request): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);

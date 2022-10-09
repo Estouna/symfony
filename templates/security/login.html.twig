@@ -5,10 +5,12 @@
 {% block body %}
 
 <h1 class="h1 my-4 font-weight-normal text-center">Connexion</h1>
+
 <section class="container d-flex justify-content-center my-3">
     <div class="row col-lg-8 col-md-10 col-sm-5">
         <div class="col">
-            <form method="post">
+            <!-- Ajout d'action="" car symfony console make:auth est déprécié -->
+            <form method="post" action="{{ path('app_login') }}">
 
                 {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -21,9 +23,10 @@
                 {% endif %}
 
                 <label for="inputEmail">Email</label>
-                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <!-- Changement name=email id="inputEmail" par "_username" et name="_password" car symfony console make:auth est déprécié -->
+                <input type="email" value="{{ last_username }}" name="_username" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
                 <label for="inputPassword" class="mt-3">Mot de passe</label>
-                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                <input type="password" name="_password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 

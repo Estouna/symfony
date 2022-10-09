@@ -16,7 +16,11 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            custom_authenticator: App\Security\UsersLoginAuthenticator
+            # Chamgement de custom_authenticator à form_login: car symfony console make:auth est déprécié
+            # custom_authenticator: App\Security\UsersLoginAuthenticator
+            form_login:
+                login_path: app_login
+                check_path: app_login
             logout:
                 path: app_logout
                 # where to redirect after logout
