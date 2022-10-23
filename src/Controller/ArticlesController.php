@@ -30,7 +30,6 @@ class ArticlesController extends AbstractController
     public function lire(?Articles $articles, $id, ArticlesRepository $ArticlesRepo, CommentsRepository $CommentsRepo, CommentService $commentService, Request $request ): Response
     {   
         $article = $ArticlesRepo->find($id);
-        $comments = $CommentsRepo->findBy(['article' => $article]);
         
         $addComment = new Comments;
         $form = $this->createForm(CommentsType::class, $addComment);
@@ -48,7 +47,6 @@ class ArticlesController extends AbstractController
         return $this->render('articles/readArticle.html.twig', [
             'controller_name' => 'Article',
             'article' => $article,
-            //'comments' => $comments,
             'comments' => $commentService->getPaginatedComments($articles),
             'formComment' => $form->createView(),
         ]);

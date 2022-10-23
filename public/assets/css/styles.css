@@ -1,19 +1,19 @@
 body{
     min-height: 100vh;
-    background-image: url("../images/bdmin2.png");
+    background-image: url("../images/bdmin3.png");
     background-size: contain;
 }
 
 /*
     ------------------------------------------------------ FONT-SIZE ------------------------------------------------------
 */
-.ft-1 {font-size: calc(8px + 0.15vw);}
-.ft-2 {font-size: calc(9px + 0.15vw);}
-.ft-3 {font-size: calc(10px + 0.15vw);}
-.ft-4 {font-size: calc(11px + 0.15vw);}
+.ft-1 {font-size: calc(10px + 0.15vw);}
+.ft-2 {font-size: calc(11px + 0.15vw);}
+.ft-3 {font-size: calc(13px + 0.15vw);}
+.ft-4 {font-size: calc(15px + 0.15vw);}
 .ft-5 {font-size: calc(14px + 0.15vw);}
-.ft-6 {font-size: calc(16px + 0.15vw);}
-.ft-7 {font-size: calc(18px + 0.15vw);}
-.ft-8 {font-size: calc(20px + 0.15vw);}
-.ft-9 {font-size: calc(22px + 0.15vw);}
-.ft-10 {font-size: calc(24px + 0.15vw);}
+.ft-6 {font-size: calc(18px + 0.15vw);}
+.ft-7 {font-size: calc(20px + 0.15vw);}
+.ft-8 {font-size: calc(22px + 0.15vw);}
+.ft-9 {font-size: calc(24px + 0.15vw);}
+.ft-10 {font-size: calc(26px + 0.15vw);}

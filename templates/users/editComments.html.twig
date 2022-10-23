@@ -5,7 +5,22 @@
 {% block body %}
 <h1 class="h1 my-4 font-weight-normal text-center">{{controller_name}}</h1>
 
-<div class="mt-5">
-	<a href="{{ path('users_index') }}" class="mt-2 btn btn-primary">Retour</a>
+<section class="container d-flex justify-content-center my-3">
+	<div class="card row col-lg-8 col-md-10 col-sm-10 my-3">
+		<div class="card-header text-center text-white bg-secondary">Poster un commentaire</div>
+		<div class="col p-2">
+		{{ form_start(formComment) }}
+			{{ form_row(formComment.contenu) }}
+			<div class="d-flex flex-row justify-content-center align-items-center my-2">
+				{{ form_row(formComment.modifier) }}
+				<a href="{{ path('users_deleteComment', {id: editComment.id}) }}" class="btn btn-danger m-1" onclick='return confirm(" Cette action est irréversible, êtes-vous sûr ? ")'>Supprimer</a>
+			</div>
+		{{ form_end(formComment) }}
+		</div>
+	</div>
+</section>
+<div>
+	<a href="{{ path('users_index') }}" class="ft-6">Retour</a>
 </div>
+
 {% endblock %}

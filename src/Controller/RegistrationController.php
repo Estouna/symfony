@@ -20,8 +20,11 @@ class RegistrationController extends AbstractController
     {
         $user = new Users();
         $form = $this->createForm(RegistrationFormType::class, $user);
+
+        // Le formulaire va aller traîter la requête
         $form->handleRequest($request);
 
+        // Si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
             
             $user->setRoles(['ROLE_USER']);

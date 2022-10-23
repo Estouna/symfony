@@ -37,7 +37,7 @@ class UsersLoginAuthenticator extends AbstractLoginFormAuthenticator
 
         return new Passport(
             new UserBadge($email),
-            new PasswordCredentials($request->request->get('password', '')),
+            new PasswordCredentials($request->request->get('_password', '')),
             [
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
             ]
@@ -50,7 +50,7 @@ class UsersLoginAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
         
-        // For example:
+       // For example:
         return new RedirectResponse($this->urlGenerator->generate('app_main'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }

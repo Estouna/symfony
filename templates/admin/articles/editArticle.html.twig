@@ -1,25 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Publier un article{% endblock %}
+{% block title %}Modifier un article{% endblock %}
 
 {% block body %}
 	<h1 class="h1 my-4 font-weight-normal">{{ controller_name }}</h1>
     <!-- 
-		FORMULAIRE PUBLIER UN ARTICLE
+		FORMULAIRE MODIFIER UN ARTICLE
 	-->
 	<section class="container d-flex justify-content-center my-3">
 		<div class="card bg-light row col-lg-8 col-md-10 col-sm-5 p-2">
 			<div class="col">
 				
-                {{ form_start(form) }}
+                {{ form_start(formArticle) }}
 
-				{{ form_row(form.titre) }}
-				{{ form_row(form.contenu) }}
+				{{ form_row(formArticle.titre) }}
+				{{ form_row(formArticle.contenu) }}
                 <div class="d-flex flex-column align-items-center">
-				    {{ form_row(form.publier) }}
+				    {{ form_row(formArticle.modifier) }}
                 </div>
 				
-				{{ form_end(form) }}
+				{{ form_end(formArticle) }}
 			</div>
 		</div>
     </section>

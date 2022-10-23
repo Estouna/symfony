@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des articles{% endblock %}
+
+{% block body %}
+	<h1 class="h1 my-4 font-weight-normal">{{ controller_name }}</h1>
+
+	<!-- 
+			LISTE DES ARTICLES
+		-->
+	<section class="container d-flex flex-column justify-content-center align-items-center my-3">
+	<div class="bg-warning text-center p-3 rounded-1">
+		<p class="m-0">Supprimer un article supprimera aussi ses commentaires !</p>
+	</div>
+
+		<table class="table table-hover">
+
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Titre</th>
+					<th scope="col">Date</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+
+			<tbody>
+                {% for article in articles %}
+				<tr class="table-active">
+					<th scope="row">{{ article.id }}</th>
+					<td>{{ article.titre }}</td>
+					<td>le {{article.getDatePublication.format('d/m/Y')}} à {{article.getDatePublication.format('H:i')}}</td>
+					<td>
+							<a href="{{ path('admin_articles_editArticles', {id: article.id}) }}" class="btn btn-info">Modifier</a>
+							<a href="{{ path('admin_articles_deleteArticle', {id: article.id}) }}" class="btn btn-danger m-1" onclick='return confirm(" Cette action est irréversible, êtes-vous sûr ? ")'>Supprimer</a>
+					</td>
+				</tr>
+                {% endfor %}
+			</tbody>
+
+		</table>
+
+	</section>
+{% endblock %}
